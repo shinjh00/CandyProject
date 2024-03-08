@@ -93,6 +93,7 @@ public class SceneManager : Singleton<SceneManager>
         }
     }
 
+    /* SceneName 확인 (임시코드) */
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
