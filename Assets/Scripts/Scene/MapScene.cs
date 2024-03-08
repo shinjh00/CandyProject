@@ -13,4 +13,5 @@ public class MapScene : BaseScene
     {
         Manager.Scene.LoadScene("GameScene");
     }
+
 }
