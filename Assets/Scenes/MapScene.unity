@@ -766,7 +766,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 2500}
+  m_SizeDelta: {x: 1000, y: 2500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &640281570
 MonoBehaviour:
@@ -782,6 +782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   episodeMap: {fileID: 5491270392558195874, guid: 64d6c9789604a864d87fe4693990c8be, type: 3}
   dataList: 
+  dataListCnt: 5
 --- !u!114 &640281571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,7 +1052,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 700, y: 0}
+  m_SizeDelta: {x: 1000, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1378319576
 MonoBehaviour:
@@ -1070,7 +1071,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
@@ -1078,7 +1079,7 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
-  m_ReverseArrangement: 1
+  m_ReverseArrangement: 0
 --- !u!114 &1378319577
 MonoBehaviour:
   m_ObjectHideFlags: 0

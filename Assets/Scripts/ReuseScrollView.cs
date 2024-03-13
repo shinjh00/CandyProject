@@ -10,11 +10,14 @@ public class ReuseScrollView : MonoBehaviour
     public ScrollItem episodeMap;         // 생성할 프리팹
     private float itemHeight = 3000.0f;   // 프리팹의 높이 값
     public List<int> dataList;            // 데이터 리스트
+    public int dataListCnt;
 
     private ScrollRect _scroll;           // Scroll View - Scroll Rect
     private List<ScrollItem> itemList;    // 생성된 프리팹 리스트
     private float offset;
 
+    // test
+    private int myStageNum = 6;
 
     private void Awake()
     {
@@ -27,7 +30,7 @@ public class ReuseScrollView : MonoBehaviour
         // dataList 세팅
         dataList.Clear();
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < dataListCnt; i++)
             dataList.Add(i);
 
         CreateEpisode();
@@ -37,15 +40,17 @@ public class ReuseScrollView : MonoBehaviour
 
     private void CreateEpisode()
     {
-        // episodeMap 프리팹을 인스턴스로 4개만 생성
+        // episodeMap 프리팹을 인스턴스로 3개만 생성
         RectTransform scrollRect = _scroll.GetComponent<RectTransform>();  // Scroll View의 RectTransform 컴포넌트
         itemList = new List<ScrollItem>();
+        //float itemLocalY = (dataLitCnt - 1) * 0.5f * itemHeight;  // ((dataListCnt - 1) / 2) * itemHeight
 
         for (int i = 0; i < 3; i++)
         {
             ScrollItem item = Instantiate<ScrollItem>(episodeMap, _scroll.content);
             itemList.Add(item);
-            item.transform.localPosition = new Vector3(0, -i * itemHeight);
+            //item.transform.localPosition = new Vector3(0, i * itemHeight);
+            //item.transform.localPosition = new Vector3(0, (i * itemHeight) - itemLocalY);
             SetData(item, i);
         }
         offset = itemList.Count * itemHeight;
@@ -59,6 +64,12 @@ public class ReuseScrollView : MonoBehaviour
     }
 
 
+    private void SetContentPos()
+    {
+        // Content 위치 변경
+    }
+
+
     private bool RelocationItem(ScrollItem item, float contentY, float scrollHeight)
     {
         // 스크롤할 때 프리팹 인스턴스 재배치
@@ -67,13 +78,13 @@ public class ReuseScrollView : MonoBehaviour
         if (item.transform.localPosition.y + contentY > itemHeight * 2f)
         {
             item.transform.localPosition -= new Vector3(0, offset);
-            //RelocationItem(item, contentY, scrollHeight);
+            RelocationItem(item, contentY, scrollHeight);
             return true;
         }
         else if (item.transform.localPosition.y + contentY < -scrollHeight - itemHeight)
         {
             item.transform.localPosition += new Vector3(0, offset);
-            //RelocationItem(item, contentY, scrollHeight);
+            RelocationItem(item, contentY, scrollHeight);
             return true;
         }
         return false;
@@ -94,7 +105,7 @@ public class ReuseScrollView : MonoBehaviour
 
     private void Update()
     {
-        RectTransform scrollRect = _scroll.GetComponent<RectTransform>();
+        /*RectTransform scrollRect = _scroll.GetComponent<RectTransform>();
         float scrollHeight = scrollRect.rect.height;
         float contentY = _scroll.content.anchoredPosition.y;
 
@@ -106,6 +117,6 @@ public class ReuseScrollView : MonoBehaviour
                 int idx = (int)(-item.transform.localPosition.y / itemHeight);
                 SetData(item, idx);
             }
-        }
+        }*/
     }
 }
