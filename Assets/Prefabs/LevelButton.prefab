@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 6286367524770879746}
   - component: {fileID: 6359502016386021836}
   m_Layer: 5
-  m_Name: Level_center
+  m_Name: LevelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,4 +299,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7450389402394553008}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
