@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapScene : BaseScene
+public class StageScene : BaseScene
 {
     public override IEnumerator LoadingRoutine()
     {
@@ -13,5 +13,4 @@ public class MapScene : BaseScene
     {
         Manager.Scene.LoadScene("GameScene");
     }
-
 }

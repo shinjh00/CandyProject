@@ -9,9 +9,9 @@ public class TitleScene : BaseScene
         yield return null;
     }
 
-    public void MapSceneLoad()
+    public void StageSceneLoad()
     {
-        Manager.Scene.LoadScene("MapScene");
+        Manager.Scene.LoadScene("StageScene");
     }
 
 }
