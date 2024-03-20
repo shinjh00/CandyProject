@@ -143,3 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d28b222ebdce94689b6ed903f7536c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: {x: 0, y: 0}
+  targetCandyPos: {x: 0, y: 0}
+  selectCandyPos: {x: 0, y: 0}

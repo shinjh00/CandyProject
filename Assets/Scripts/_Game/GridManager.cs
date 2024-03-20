@@ -7,7 +7,7 @@ public class GridManager : MonoBehaviour
     public List<Sprite> candyList = new List<Sprite>();  // 배치할 스프라이트 목록
     public GameObject candyPrefab;  // 타일을 생성하기 위한 스텐실. 스프라이트를 할당하여 개인화됨
     public int gridDimension;  // 그리드의 크기
-    public float candyDistance;  // 타일의 거리
+    public float gridDistance;  // 타일의 거리
 
     private GameObject[,] grid;  // 2차원 배열의 Grid
 
@@ -29,7 +29,7 @@ public class GridManager : MonoBehaviour
 
     private void InitGrid()
     {
-        float center = (gridDimension * candyDistance / 2.0f) - (candyDistance / 2.0f);
+        float center = (gridDimension * gridDistance / 2.0f) - (gridDistance / 2.0f);
         Vector3 gridCenter = new Vector3(center, center, 0);  // 그리드의 정중앙
         Vector3 positionOffset = transform.position - gridCenter;  // 그리드가 GameObject의 중앙에 오도록 오프셋을 계산
 
@@ -58,14 +58,15 @@ public class GridManager : MonoBehaviour
                 SpriteRenderer renderer = newCandy.GetComponent<SpriteRenderer>();  // SpriteRenderer를 이용해 셀의 스프라이트를 설정할 것임
                 renderer.sprite = availCandySprites[Random.Range(0, availCandySprites.Count)];  // 사용 가능 스프라이트 목록에서 랜덤으로 할당
 
-                //Tile tile = newTile.AddComponent<Tile>();  // 생성된 Tile 프리팹에 Tile 컴포넌트 추가
-                //tile.position = new Vector2Int(column, row);  // 그리드에서 셀의 위치
+                Candy candy = newCandy.GetComponent<Candy>();  // 생성된 Candy 프리팹에 Candy 컴포넌트
+                candy.position = new Vector2Int(column, row);  // 그리드에서 셀의 위치
 
                 newCandy.transform.parent = transform;  // 모든 셀은 그리드가 부모임
-                newCandy.transform.position = new Vector3(column * candyDistance, row * candyDistance, 0) + positionOffset;  // 셀의 위치 지정
+                newCandy.transform.position = new Vector3(column * gridDistance, row * gridDistance, 0) + positionOffset;  // 셀의 위치 지정
                 grid[column, row] = newCandy;  // 생성된 셀에 대한 참조를 저장
             }
         }
+        
     }
 
 
@@ -86,19 +87,21 @@ public class GridManager : MonoBehaviour
 
     /* 인접한 두 셀 교환 */
 
-    public void SwapTiles(Vector2Int targetPosition, Vector2Int selectedPosition)  // 두 타일의 위치
+    public void SwapCandy(Vector2Int targetPos, Vector2Int selectPos)  // 두 타일의 위치
     {
-        // 두 셀의 스프라이트 렌더러 가져오기
-        GameObject targetTile = grid[targetPosition.x, targetPosition.y];
-        SpriteRenderer targetRender = targetTile.GetComponent<SpriteRenderer>();
+        // 렌더러말고 오브젝트 자체를 바꾸기
 
-        GameObject selectedTile = grid[selectedPosition.x, selectedPosition.y];
-        SpriteRenderer selectedRender = selectedTile.GetComponent<SpriteRenderer>();
+        // 두 셀의 스프라이트 렌더러 가져오기
+        GameObject targetCandy = grid[targetPos.x, targetPos.y];
+        SpriteRenderer targetRender = targetCandy.GetComponent<SpriteRenderer>();
+
+        GameObject selectCandy = grid[selectPos.x, selectPos.y];
+        SpriteRenderer selectRender = selectCandy.GetComponent<SpriteRenderer>();
 
         // Swap
         Sprite temp = targetRender.sprite;
-        targetRender.sprite = selectedRender.sprite;
-        selectedRender.sprite = temp;
+        targetRender.sprite = selectRender.sprite;
+        selectRender.sprite = temp;
     }
 
     private void Update()

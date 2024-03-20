@@ -17,7 +17,7 @@ public class ReuseScrollView : MonoBehaviour
     private float offset;
 
     // test
-    private int myStageNum = 6;
+    //private int myStageNum = 6;
 
     private void Awake()
     {
