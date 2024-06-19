@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TitleScene : BaseScene
+public class MapScene : BaseScene
 {
     public override IEnumerator LoadingRoutine()
     {
         yield return null;
     }
 
-    public void MapSceneLoad()
+    public void GameSceneLoad()
     {
-        Manager.Scene.LoadScene("MapScene");
+        Manager.Scene.LoadScene("GameScene");
     }
 
 }

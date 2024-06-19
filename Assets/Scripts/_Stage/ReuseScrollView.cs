@@ -17,7 +17,7 @@ public class ReuseScrollView : MonoBehaviour
     private float offset;
 
     // test
-    //private int myStageNum = 6;
+    private int myStageNum = 6;
 
     private void Awake()
     {
@@ -43,13 +43,13 @@ public class ReuseScrollView : MonoBehaviour
         // episodeMap 프리팹을 인스턴스로 3개만 생성
         RectTransform scrollRect = _scroll.GetComponent<RectTransform>();  // Scroll View의 RectTransform 컴포넌트
         itemList = new List<ScrollItem>();
-        //float itemLocalY = (dataLitCnt - 1) * 0.5f * itemHeight;  // ((dataListCnt - 1) / 2) * itemHeight
+        float itemLocalY = (dataListCnt - 1) * 0.5f * itemHeight;  // ((dataListCnt - 1) / 2) * itemHeight
 
         for (int i = 0; i < 3; i++)
         {
             ScrollItem item = Instantiate<ScrollItem>(episodeMap, _scroll.content);
             itemList.Add(item);
-            //item.transform.localPosition = new Vector3(0, i * itemHeight);
+            item.transform.localPosition = new Vector3(0, i * itemHeight);
             //item.transform.localPosition = new Vector3(0, (i * itemHeight) - itemLocalY);
             SetData(item, i);
         }
@@ -60,7 +60,8 @@ public class ReuseScrollView : MonoBehaviour
     private void SetContentHeight()
     {
         // Content 크기 늘이기
-        _scroll.content.sizeDelta = new Vector2(_scroll.content.sizeDelta.x, dataList.Count * itemHeight);
+        //_scroll.content.sizeDelta = new Vector2(_scroll.content.sizeDelta.x, dataList.Count * itemHeight);
+        _scroll.content.sizeDelta = new Vector2(_scroll.content.sizeDelta.x, 30000);
     }
 
 
@@ -105,7 +106,7 @@ public class ReuseScrollView : MonoBehaviour
 
     private void Update()
     {
-        /*RectTransform scrollRect = _scroll.GetComponent<RectTransform>();
+        RectTransform scrollRect = _scroll.GetComponent<RectTransform>();
         float scrollHeight = scrollRect.rect.height;
         float contentY = _scroll.content.anchoredPosition.y;
 
@@ -117,6 +118,6 @@ public class ReuseScrollView : MonoBehaviour
                 int idx = (int)(-item.transform.localPosition.y / itemHeight);
                 SetData(item, idx);
             }
-        }*/
+        }
     }
 }
